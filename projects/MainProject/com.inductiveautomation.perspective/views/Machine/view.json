@@ -1,0 +1,74 @@
+{
+  "custom": {},
+  "params": {
+    "pumpName": "Pump1",
+    "pumpValue": ""
+  },
+  "propConfig": {
+    "params.pumpName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pumpValue": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Pump"
+        },
+        "position": {
+          "basis": "195px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.label.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.pumpName}"
+              },
+              "type": "expr"
+            }
+          },
+          "props.state": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.pumpValue} \u003e 100, \u0027running\u0027, if({view.params.pumpValue} \u003c 50, \u0027faulted\u0027, \u0027stopped\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.pumpValue} + \u0027%\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "label": {},
+          "value": {}
+        },
+        "type": "ia.symbol.pump"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

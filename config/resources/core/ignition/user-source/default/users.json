@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "uuid": "2b47d257-463b-4330-90a6-1217b230e0f3",
+      "username": "admin",
+      "schedule": "Always",
+      "password": "[21ee4218]09eb4d2beb0130b5ccae477f838c5d8ec6f5daaca0798396f1c0d25a37983d41",
+      "passwordDate": "20251008.115255305-0700",
+      "passwordHistory": [],
+      "createdDate": "20251008.115255304-0700",
+      "lastModifiedDate": "20251008.115255304-0700",
+      "roles": [
+        "55c01794-cc7d-47f8-afc8-0e9e41fe9db9"
+      ],
+      "extraProps": [],
+      "scheduleAdjustments": [],
+      "contactInfos": []
+    },
+    {
+      "uuid": "0813beff-995b-4587-8fd0-78ee66cff378",
+      "username": "Liz",
+      "firstName": "Liz",
+      "lastName": "Lizbert",
+      "schedule": "Always",
+      "description": "",
+      "password": "[EC763BC4]edada6be90aaff775ebd5a8b759ee4037c5412d5908978e4e0adf43061ea7f1f",
+      "passwordDate": "20251008.140529365-0700",
+      "passwordHistory": [],
+      "badge": "",
+      "createdDate": "20251008.140529365-0700",
+      "lastModifiedDate": "20251008.140542824-0700",
+      "roles": [
+        "54dd9bce-00b9-4e20-9700-aa545861fa2a"
+      ],
+      "extraProps": [
+        {
+          "propertyKey": "user.pin",
+          "propertyValue": ""
+        }
+      ],
+      "scheduleAdjustments": [],
+      "contactInfos": []
+    },
+    {
+      "uuid": "5a0f6a2d-d88b-46ad-a5ad-25801673fc24",
+      "username": "Paul",
+      "firstName": "Paul",
+      "lastName": "Paulson",
+      "schedule": "Always",
+      "description": "",
+      "password": "[928C8B64]9055ef9ad26eabd705ea4afee511e271697ffe765e9ea83aacb4df7d45212390",
+      "passwordDate": "20251008.140503587-0700",
+      "passwordHistory": [],
+      "badge": "",
+      "createdDate": "20251008.140503586-0700",
+      "lastModifiedDate": "20251015.130104522-0700",
+      "roles": [
+        "54dd9bce-00b9-4e20-9700-aa545861fa2a"
+      ],
+      "extraProps": [
+        {
+          "propertyKey": "user.pin",
+          "propertyValue": ""
+        }
+      ],
+      "scheduleAdjustments": [],
+      "contactInfos": []
+    }
+  ],
+  "roles": [
+    {
+      "uuid": "55c01794-cc7d-47f8-afc8-0e9e41fe9db9",
+      "rolename": "Administrator",
+      "createdDate": "20251008.115255304-0700",
+      "lastModifiedDate": "20251008.115255304-0700"
+    },
+    {
+      "uuid": "54dd9bce-00b9-4e20-9700-aa545861fa2a",
+      "rolename": "Operator",
+      "createdDate": "20251008.140326107-0700",
+      "lastModifiedDate": "20251015.130104388-0700"
+    },
+    {
+      "uuid": "a9bbedf0-0b3e-4d37-bce6-3c444f4ba00d",
+      "rolename": "Manager",
+      "createdDate": "20251009.160559056-0700",
+      "lastModifiedDate": "20251015.130104496-0700"
+    }
+  ]
+}

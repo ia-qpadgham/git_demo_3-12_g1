@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "/": {
+      "title": "",
+      "viewPath": "ViewTrainees"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}

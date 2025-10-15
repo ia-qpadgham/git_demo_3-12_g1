@@ -1,0 +1,570 @@
+{
+  "custom": {
+    "PumpList": {}
+  },
+  "params": {},
+  "propConfig": {
+    "custom.PumpList": {
+      "persistent": true
+    },
+    "custom.PumpList.Pump1": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump1"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.PumpList.Pump2": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump2"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.PumpList.Pump3": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump3"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.PumpList.Pump4": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump4"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.PumpList.Pump5": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump5"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.PumpList.Pump6": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[test]Pumps/Pump6"
+        },
+        "type": "tag"
+      }
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "height": 461,
+          "width": 724,
+          "x": 24,
+          "y": 20
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.PumpList"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstanceList \u003d []\n\tfor pump in value:\n\t\tinstance \u003d {\n  \t\t\t\"pumpName\":pump,\n  \t\t\t\"pumpValue\":value[pump]\n\t\t}\n\t\tinstanceList.append(instance)\n\treturn instanceList",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "flex-start",
+          "justify": "center",
+          "path": "Machine",
+          "wrap": "wrap"
+        },
+        "type": "ia.display.flex-repeater"
+      },
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "height": 311,
+          "width": 765,
+          "x": 3.5,
+          "y": 474
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "minutes",
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1760559203191
+              ],
+              "$ts": 1760559202150
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1760559203191
+              ],
+              "$ts": 1760558903150
+            },
+            "unitOfTime": 5,
+            "visibility": {
+              "buttons": {
+                "showTagBrowserButton": false
+              }
+            }
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          },
+          "legend": {
+            "visible": true
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump1"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump1",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump2"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump2",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump3"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump3",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump4"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump4",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump5"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#A6D854",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#A6D854",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#A6D854",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#A6D854",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#A6D854",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#A6D854",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#A6D854",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#A6D854",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump5",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:WrongHistorian:/sys:FlatFileTraining:/prov:default:/tag:Pumps/Pump6"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FFD930",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FFD930",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FFD930",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FFD930",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#FFD930",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#FFD930",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FFD930",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FFD930",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Pump6",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ]
+        },
+        "type": "ia.chart.powerchart"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

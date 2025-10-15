@@ -1,0 +1,62 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 324
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "AlarmStatusTable"
+            },
+            "props": {
+              "refreshRate": 1000
+            },
+            "type": "ia.display.alarmstatustable"
+          },
+          {
+            "meta": {
+              "name": "AlarmJournalTable"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "name": "InternalAlarmJournal"
+            },
+            "type": "ia.display.alarmjournaltable"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1
+        },
+        "props": {
+          "tabSize": {
+            "width": 200
+          },
+          "tabs": [
+            "Alarm Status Table",
+            "Alarm Journal"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

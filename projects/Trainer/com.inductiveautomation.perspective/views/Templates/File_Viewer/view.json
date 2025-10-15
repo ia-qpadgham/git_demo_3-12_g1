@@ -1,0 +1,104 @@
+{
+  "custom": {},
+  "params": {
+    "file_path": "/usr/local/bin/ignition/logs/tag-migration/default-migration.json"
+  },
+  "propConfig": {
+    "params.file_path": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TextArea"
+        },
+        "position": {
+          "basis": "160px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.file_path"
+              },
+              "transforms": [
+                {
+                  "code": "\tfrom java.io import File\n\timport json\n\n\tfile_path \u003d self.view.params.file_path\n\tthis_file \u003d File(file_path)\n\tif not this_file.exists() or not this_file.isFile():\n\t    return \"File not found or is not a valid file.\"\n\t\n\ttry:\n\t    with open(file_path, \"r\") as f:\n\t        content \u003d f.read()\n\t        if file_path.endswith(\".json\"):\n\t            try:\n\t                json_content \u003d json.loads(content)\n\t                return json.dumps(json_content, indent\u003d2)\n\t            except json.JSONDecodeError:\n\t                return \"Invalid JSON format.\"\n\t        return content\n\texcept Exception as e:\n\t    return \"Error reading file: \" + str(e)",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#000000",
+            "color": "#FFFAFA",
+            "fontFamily": "monospace",
+            "fontSize": 18
+          }
+        },
+        "type": "ia.input.text-area"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tnew_json \u003d self.getSibling(\"TextArea\").props.text\n\tpath \u003d self.view.params.file_path\n\tlogger \u003d system.util.getLogger(\u0027saveFile\u0027)\n\t\n\tdef save_json_to_file(json_string, file_path):\n\t\tfrom java.io import File, FileWriter, BufferedWriter\n\t\timport json\n\t\ttry:\n\t\t\tjson_data \u003d json.loads(json_string)\n\t\t\t\n\t\t\twith open(file_path, \"w\") as json_file:\n\t\t\t    json.dump(json_data, json_file, indent\u003d4)\n\t\texcept Exception as e:\n\t\t    return \"Error saving JSON: \" + str(e)\n\t\n\tsave_json_to_file(new_json, path)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "34px"
+        },
+        "props": {
+          "text": "Save Changes"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tapikey \u003d \"MyApiKey:Qd7sSq1wziRLCM192kkvoQVeJLaw08QlMhKdaPHqR6Q\"\n\turl \u003d \"http://localhost:8088/data/api/v1/scan/config\"\n\t\n\tclient \u003d system.net.httpClient()\n\t\n\theaders \u003d {\u0027X-Ignition-API-Token\u0027:apikey, \u0027Accept\u0027:\u0027application/json\u0027}\n\t\n\tclient.post(url\u003durl, headers\u003dheaders)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "basis": "34px"
+        },
+        "props": {
+          "text": "Scan For Changes"
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

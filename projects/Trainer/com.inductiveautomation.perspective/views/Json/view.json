@@ -1,0 +1,63 @@
+{
+  "custom": {},
+  "params": {
+    "address": "10.0.4.103",
+    "item": "sys_props"
+  },
+  "propConfig": {
+    "params.address": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.item": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TextArea"
+        },
+        "position": {
+          "basis": "160px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.address"
+              },
+              "transforms": [
+                {
+                  "code": "\timport json\n\tcontent \u003d (system.tag.readBlocking([\"[default]TraineeData\"])[0].value[value][self.view.params.item])\n\tdef deep_convert(data):\n\t    # If it\u0027s a dictionary-like object (or has keys)\n\t    if hasattr(data, \u0027keys\u0027):\n\t        # Create a new dict, recursively converting each value\n\t        return {key: deep_convert(data[key]) for key in data}\n\t\n\t    # If it\u0027s a list-like object but not a string\n\t    elif hasattr(data, \u0027__iter__\u0027) and not isinstance(data, basestring):\n\t        # Create a new list, recursively converting each item\n\t        return [deep_convert(item) for item in data]\n\t        \n\t    # If it\u0027s a simple value (string, number, etc.), return it as is\n\t    return data\n\tcontent  \u003d deep_convert(content)\n#\tjson_content \u003d json.loads(content)\n#\ttry:?\n\treturn json.dumps(content, indent\u003d2, sort_keys\u003dTrue)\n#\texcept Exception as e:\n#\t\treturn e",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#000000",
+            "color": "#FFFAFA",
+            "fontFamily": "monospace",
+            "fontSize": 18
+          }
+        },
+        "type": "ia.input.text-area"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

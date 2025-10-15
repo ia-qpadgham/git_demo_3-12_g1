@@ -1,0 +1,272 @@
+{
+  "custom": {
+    "autobackups": false,
+    "device": false,
+    "historian": false,
+    "result": null,
+    "scheduledBackupsEnabled": false,
+    "sys_props": null,
+    "target": [
+      "historian",
+      "enabled"
+    ]
+  },
+  "params": {
+    "address": "10.0.4.103",
+    "target": "[historian,enabled]"
+  },
+  "propConfig": {
+    "custom.device": {
+      "binding": {
+        "config": {
+          "path": "view.custom.result.device.enabled"
+        },
+        "transforms": [
+          {
+            "code": "\tif value:\n\t\treturn value\n\telse:\n\t\treturn False\n\treturn value",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.historian": {
+      "binding": {
+        "config": {
+          "path": "view.custom.result.historian.enabled"
+        },
+        "transforms": [
+          {
+            "code": "\tif value:\n\t\treturn value\n\telse:\n\t\treturn False\n\treturn value",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.result": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "direct",
+          "tagPath": "[default]TraineeData"
+        },
+        "transforms": [
+          {
+            "code": "\treturn value[self.params.address]",
+            "type": "script"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.sys_props": {
+      "binding": {
+        "config": {
+          "path": "view.custom.result.sys_props.config.scheduledBackupsEnabled"
+        },
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.target": {
+      "binding": {
+        "config": {
+          "path": "view.params.target"
+        },
+        "transforms": [
+          {
+            "code": "\tmy_list \u003d value.strip(\u0027[]\u0027).split(\u0027,\u0027)\n\treturn my_list",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.address": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.target": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 102
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.address"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "30px",
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.good": {
+                "binding": {
+                  "config": {
+                    "expression": "now(1000)"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\titem \u003d self.view.custom.target[0]\n\tresult \u003d self.view.custom[item]\n\treturn result",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.good"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": null,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "#B3323C"
+                        },
+                        {
+                          "input": true,
+                          "output": "#38B332"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "this.custom.good"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": null,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": false,
+                          "output": "material/block"
+                        },
+                        {
+                          "input": true,
+                          "output": "material/check"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "custom": {
+              "target": "sys_props"
+            },
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "TRmN3Px9",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "open",
+                    "viewParams": {
+                      "address": "{view.params.address}",
+                      "item": "{view.custom.target[0]}"
+                    },
+                    "viewPath": "Json",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "80px",
+              "grow": 1
+            },
+            "props": {
+              "text": "see JSON"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

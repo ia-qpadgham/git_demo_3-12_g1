@@ -1,0 +1,85 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "basis": "36px"
+        },
+        "propConfig": {
+          "props.value": {
+            "onChange": {
+              "enabled": null,
+              "script": "\trepeaterSelf \u003d self.getSibling(\"FlexRepeater\")\n\trepeaterSelf.refreshBinding(\"props.instances\")"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "scheduledBackupsEnabled",
+              "value": "[sys_props,config,scheduledBackupsEnabled]"
+            },
+            {
+              "label": "historian",
+              "value": "[historian,enabled]"
+            },
+            {
+              "label": "device",
+              "value": "[device,enabled]"
+            }
+          ],
+          "value": "[sys_props,config,scheduledBackupsEnabled]"
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "../Dropdown.props.value"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d []\n\ttrainee_data \u003d system.tag.readBlocking([\"[default]TraineeData\"])[0].value\n\tfor item in trainee_data:\n\t\t\n\t\tnew \u003d {\n\t  \t\t\"address\": item,\n\t  \t\t\"target\": value\n\t\t}\n\t\tinstances.append(new)\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "path": "Trainee",
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

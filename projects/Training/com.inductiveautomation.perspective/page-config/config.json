@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "/": {
+      "title": "",
+      "viewPath": "SimView"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}
