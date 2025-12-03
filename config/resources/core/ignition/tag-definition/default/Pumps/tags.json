@@ -39,7 +39,7 @@
     "opcItemPath": "ns\u003d1;s\u003d[SimulatedDevice]Realistic/Realistic2",
     "historicalDeadbandMode": "Off",
     "historicalDeadbandStyle": "Discrete",
-    "tagGroup": "Pumps",
+    "tagGroup": "Default",
     "tagType": "AtomicTag",
     "clampMode": "Clamp_High",
     "scaledHigh": 100.0,
