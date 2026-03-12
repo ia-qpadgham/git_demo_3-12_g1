@@ -1,7 +1,7 @@
 {
-  "automaticThreadDumpsCpuThreshold": 70,
+  "automaticThreadDumpsCpuThreshold": 90,
   "automaticThreadDumpsCpuThresholdExceededDuration": 10,
-  "automaticThreadDumpsEnabled": false,
+  "automaticThreadDumpsEnabled": true,
   "automaticThreadDumpsIntervalSeconds": 60,
   "automaticThreadDumpsRetentionCount": 50,
   "clientFallbackEnabled": false,
