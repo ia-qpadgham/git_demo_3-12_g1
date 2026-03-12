@@ -7,9 +7,9 @@
     "maintenanceSettings": {
       "directory": "",
       "maintenanceAge": 1,
-      "maintenanceAgeUnits": "HOUR",
+      "maintenanceAgeUnits": "WEEK",
       "strategy": "PRUNE"
     },
-    "partitionInterval": "HOUR"
+    "partitionInterval": "WEEK"
   }
 }
