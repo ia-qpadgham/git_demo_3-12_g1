@@ -3864,7 +3864,7 @@
           }
         },
         "props": {
-          "numberFormat": "0.###E0",
+          "numberFormat": "0.0",
           "segmentFormat": "7 segment"
         },
         "type": "ia.display.led-display"
